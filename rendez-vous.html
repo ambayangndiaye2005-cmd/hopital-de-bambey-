@@ -1,101 +1,151 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rendez-vous - Hôpital de Bambey</title>
 
-    <title>Rendez-vous - Hôpital de Bambey</title>
+<style>
+* {
+    box-sizing: border-box;
+}
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f2f6f8;
-            margin: 0;
-        }
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background:white;
+    color: #333;
+}
 
-        header {
-            background: #087f8c;
-            color: white;
-            text-align: center;
-            padding: 25px;
-        }
+header {
+    background:#087fb7;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
 
-        .conteneur {
-            max-width: 600px;
-            margin: 30px auto;
-            background: white;
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.15);
-        }
+header h1 {
+    margin: 0;
+    font-size: 24px;
+}
 
-        h2 {
-            color: #087f8c;
-            text-align: center;
-        }
+header p {
+    margin: 7px 0 0;
+}
 
-        label {
-            display: block;
-            margin-top: 15px;
-            font-weight: bold;
-        }
+.container {
+    max-width: 650px;
+    margin: 25px auto;
+    padding: 15px;
+}
 
-        input, select {
-            width: 100%;
-            padding: 12px;
-            margin-top: 6px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-        }
+.card {
+    background: white;
+    padding: 22px;
+    border-radius: 15px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+    margin-bottom: 20px;
+}
 
-        button {
-            width: 100%;
-            margin-top: 25px;
-            padding: 13px;
-            background: #087f8c;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            font-size: 16px;
-        }
+h2 {
+    color:#087fb7;
+    margin-top: 0;
+}
 
-        .retour {
-            display: block;
-            text-align: center;
-            margin-top: 20px;
-            color: #087f8c;
-        }
-    </style>
+label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 13px;
+    margin-top: 7px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+button {
+    width: 100%;
+    padding: 14px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 8px;
+    background:#087fb7;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.retour {
+    background: #555;
+}
+
+.confirmation {
+    display: none;
+    margin-top: 20px;
+    padding: 18px;
+    background:#087fb7;
+    border-radius: 10px;
+    border-left: 5px solid #087f8c;
+}
+
+.confirmation h3 {
+    color:#087fb7;
+}
+
+.rdv {
+    background: white;
+    padding: 18px;
+    margin-top: 12px;
+    border-radius: 10px;
+    border-left: 5px solid #087fb7;
+}
+
+.rdv strong {
+    color:white;
+    font-size: 18px;
+}
+
+.btn-annuler {
+    background:white;
+}
+
+.aucun {
+    text-align: center;
+    color:#087fb7;
+}
+</style>
 </head>
 
 <body>
 
 <header>
-    <h1>Hôpital de Bambey</h1>
+    <h1>HÔPITAL DE BAMBEY</h1>
     <p>Gestion des rendez-vous</p>
 </header>
 
-<div class="conteneur">
+<div class="container">
 
-    <h2>Prendre un rendez-vous</h2>
+<div class="card">
 
-    <form>
+<h2>📅 Nouveau rendez-vous</h2>
 
-        <label>Nom du patient</label>
-        <input type="text" placeholder="Nom">
+<label>Prénom</label>
+<input type="text" id="prenom" placeholder="Prénom du patient">
 
-        <label>Prénom du patient</label>
-        <input type="text" placeholder="Prénom">
+<label>Nom</label>
+<input type="text" id="nom" placeholder="Nom du patient">
 
-        <label>Téléphone</label>
-        <input type="tel" placeholder="77 000 00 00">
+<label>Téléphone</label>
+<input type="tel" id="telephone" placeholder="77 000 00 00">
 
-        <label>Service</label>
-        <select>
-            <option>Choisir un service</option>
-            <option>Médecine générale</option>
-            
-            <option value="">Choisir un service</option>
+<label>Service</label>
+<select id="service">
+    <option value="">Choisir un service</option>
     <option>Consultation générale</option>
     <option>Pédiatrie</option>
     <option>Gynécologie</option>
@@ -103,28 +153,239 @@
     <option>Radiologie</option>
     <option>Laboratoire</option>
     <option>Ophtalmologie</option>
+</select>
 
-            
-  
-        </select>
 
-        <label>Date du rendez-vous</label>
-        <input type="date">
+<label>Date</label>
+<input type="date" id="date">
 
-        <label>Heure du rendez-vous</label>
-        <input type="time">
+<label>Heure</label>
+<input type="time" id="heure">
 
-        <button type="submit">
-            Prendre le rendez-vous
-        </button>
+<button onclick="prendreRendezVous()">
+    📅 CONFIRMER LE RENDEZ-VOUS
+</button>
 
-    </form>
+<div class="confirmation" id="confirmation">
 
-    <a class="retour" href="index.html">
-        ← Retour à l'accueil
-    </a>
+<h3>✅ Rendez-vous confirmé</h3>
+
+<p>
+<strong>Numéro :</strong>
+<span id="numero"></span>
+</p>
+
+<p>
+<strong>Patient :</strong>
+<span id="patient"></span>
+</p>
+
+<p>
+<strong>Service :</strong>
+<span id="serviceConfirme"></span>
+</p>
+
+<p>
+<strong>Date :</strong>
+<span id="dateConfirmee"></span>
+</p>
+
+<p>
+<strong>Heure :</strong>
+<span id="heureConfirmee"></span>
+</p>
 
 </div>
+		<button class="retour"
+    onclick="window.location.href='hopital.html'"
+>
+    ← RETOUR AU TABLEAU DE BORD
+</button>
+
+
+
+<div class="card">
+
+<h2>📋 Rendez-vous enregistrés</h2>
+
+<div id="listeRendezVous"></div>
+
+</div>
+
+</div>
+
+<script>
+
+function prendreRendezVous() {
+
+    const prenom =
+        document.getElementById("prenom").value.trim();
+
+    const nom =
+        document.getElementById("nom").value.trim();
+
+    const telephone =
+        document.getElementById("telephone").value.trim();
+
+    const service =
+        document.getElementById("service").value;
+
+    const date =
+        document.getElementById("date").value;
+
+    const heure =
+        document.getElementById("heure").value;
+
+    if (!prenom || !nom || !telephone ||
+        !service || !date || !heure) {
+
+        alert("Veuillez remplir tous les champs.");
+        return;
+    }
+
+    const numero =
+        "RDV-" + Math.floor(1000 + Math.random() * 9000);
+
+    const rendezVous = {
+        numero: numero,
+        prenom: prenom,
+        nom: nom,
+        telephone: telephone,
+        service: service,
+        date: date,
+        heure: heure,
+        statut: "Confirmé"
+    };
+
+    let liste =
+        JSON.parse(
+            localStorage.getItem("rendezVousBambey")
+        ) || [];
+
+    liste.push(rendezVous);
+
+    localStorage.setItem(
+        "rendezVousBambey",
+        JSON.stringify(liste)
+    );
+
+    document.getElementById("numero").textContent = numero;
+    document.getElementById("patient").textContent =
+        prenom + " " + nom;
+    document.getElementById("serviceConfirme").textContent =
+        service;
+    document.getElementById("dateConfirmee").textContent =
+        date;
+    document.getElementById("heureConfirmee").textContent =
+        heure;
+
+    document.getElementById("confirmation").style.display =
+        "block";
+
+    afficherRendezVous();
+
+    alert("Rendez-vous enregistré avec succès.");
+}
+
+
+function afficherRendezVous() {
+
+    const liste =
+        JSON.parse(
+            localStorage.getItem("rendezVousBambey")
+        ) || [];
+
+    const zone =
+        document.getElementById("listeRendezVous");
+
+    zone.innerHTML = "";
+
+    if (liste.length === 0) {
+
+        zone.innerHTML =
+            '<div class="aucun">Aucun rendez-vous enregistré.</div>';
+
+        return;
+    }
+
+    liste.forEach(function(rdv) {
+
+        const element =
+            document.createElement("div");
+
+        element.className = "rdv";
+
+        element.innerHTML = `
+
+            <strong>${rdv.numero}</strong>
+
+            <p>👤 <b>Patient :</b>
+            ${rdv.prenom} ${rdv.nom}</p>
+
+            <p>📞 <b>Téléphone :</b>
+            ${rdv.telephone}</p>
+
+            <p>🏥 <b>Service :</b>
+            ${rdv.service}</p>
+
+            <p>📅 <b>Date :</b>
+            ${rdv.date}</p>
+
+            <p>🕐 <b>Heure :</b>
+            ${rdv.heure}</p>
+
+            <p>📌 <b>Statut :</b>
+            ${rdv.statut}</p>
+
+            <button
+                class="btn-annuler"
+                onclick="annulerRendezVous('${rdv.numero}')">
+                ❌ ANNULER LE RENDEZ-VOUS
+            </button>
+        `;
+
+        zone.appendChild(element);
+    });
+}
+
+
+function annulerRendezVous(numero) {
+
+    if (!confirm(
+        "Voulez-vous vraiment annuler ce rendez-vous ?"
+    )) {
+        return;
+    }
+
+    let liste =
+        JSON.parse(
+            localStorage.getItem("rendezVousBambey")
+        ) || [];
+
+    liste = liste.filter(function(rdv) {
+        return rdv.numero !== numero;
+    });
+
+    localStorage.setItem(
+        "rendezVousBambey",
+        JSON.stringify(liste)
+    );
+
+    afficherRendezVous();
+
+    alert("Le rendez-vous a été annulé.");
+}
+
+
+function retourDashboard() {
+
+    window.location.href = "dashboard.html";
+
+}
+
+afficherRendezVous();
+
+</script>
 
 </body>
 </html>
