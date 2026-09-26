@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Hôpital de Bambey</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f6f8;
+            color: #333;
+        }
+
+        header {
+            background: #087f8c;
+            color: white;
+            padding: 25px 15px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        header p {
+            font-size: 16px;
+        }
+
+        nav {
+            background: white;
+            padding: 12px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        nav a {
+            color: #087f8c;
+            text-decoration: none;
+            margin: 8px;
+            font-weight: bold;
+        }
+
+        .accueil {
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .accueil h2 {
+            color: #087f8c;
+            margin-bottom: 15px;
+        }
+
+        .accueil p {
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .conteneur {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .carte {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+        }
+
+        .carte h3 {
+            color: #087f8c;
+            margin-bottom: 12px;
+        }
+
+        .bouton {
+            display: inline-block;
+            background: #087f8c;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            margin-top: 10px;
+        }
+
+        .bouton:hover {
+            background: #05636d;
+        }
+
+        footer {
+            margin-top: 40px;
+            background: #087f8c;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Hôpital de Bambey</h1>
+        <p>Application de gestion hospitalière</p>
+    </header>
+
+    <nav>
+        <a href="index.html">Accueil</a>
+        <a href="#">Patients</a>
+        <a href="#">Rendez-vous</a>
+        <a href="#">Postes de santé</a>
+    </nav>
+
+    <section class="accueil">
+
+        <h2>Bienvenue à l'Hôpital de Bambey</h2>
+
+        <p>
+            Cette application permet de faciliter la gestion
+            des patients, des rendez-vous et des postes de santé
+            de la ville de Bambey.
+        </p>
+
+        <div class="conteneur">
+
+            <div class="carte">
+                <h3>👨‍⚕️ Patients</h3>
+                <p>
+                    Enregistrer et consulter les informations
+                    des patients.
+                </p>
+                <a href="#" class="bouton">Accéder</a>
+            </div>
+
+            <div class="carte">
+                <h3>📅 Rendez-vous</h3>
+                <p>
+                    Prendre et gérer les rendez-vous des patients.
+                </p>
+                <a href="#" class="bouton">Prendre rendez-vous</a>
+            </div>
+
+            <div class="carte">
+                <h3>🏥 Postes de santé</h3>
+                <p>
+                    Consulter les différents postes de santé
+                    de Bambey.
+                </p>
+                <a href="#" class="bouton">Voir les postes</a>
+            </div>
+
+            <div class="carte">
+                <h3>🎫 Tickets</h3>
+                <p>
+                    Gérer les tickets et l'ordre de passage
+                    des patients.
+                </p>
+                <a href="#" class="bouton">Voir les tickets</a>
+            </div>
+
+        </div>
+
+    </section>
+
+    <footer>
+        <p>© 2026 - Hôpital de Bambey</p>
+        <p>Application de gestion hospitalière</p>
+    </footer>
+
+</body>
+</html>
