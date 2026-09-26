@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patients - Hôpital de Bambey</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f6f8;
+            margin: 0;
+        }
+
+        header {
+            background: #087f8c;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        .conteneur {
+            max-width: 600px;
+            margin: 30px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+        }
+
+        h2 {
+            color: #087f8c;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            margin-top: 6px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 25px;
+            padding: 13px;
+            background: #087f8c;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        .retour {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #087f8c;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Hôpital de Bambey</h1>
+    <p>Gestion des patients</p>
+</header>
+
+<div class="conteneur">
+
+    <h2>Enregistrer un patient</h2>
+
+    <form>
+
+        <label>Nom</label>
+        <input type="text" placeholder="Nom du patient">
+
+        <label>Prénom</label>
+        <input type="text" placeholder="Prénom du patient">
+
+        <label>Date de naissance</label>
+        <input type="date">
+
+        <label>Sexe</label>
+        <select>
+            <option>Choisir</option>
+            <option>Masculin</option>
+            <option>Féminin</option>
+        </select>
+
+        <label>Téléphone</label>
+        <input type="tel" placeholder="77 000 00 00">
+
+        <label>Adresse</label>
+        <input type="text" placeholder="Adresse du patient">
+
+        <button type="submit">
+            Enregistrer le patient
+        </button>
+
+    </form>
+
+    <a class="retour" href="index.html">
+        ← Retour à l'accueil
+    </a>
+
+</div>
+
+</body>
+</html>
