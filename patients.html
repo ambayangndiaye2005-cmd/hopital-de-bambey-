@@ -1,118 +1,483 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Patients - Hôpital de Bambey</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f2f6f8;
-            margin: 0;
-        }
+<title>Patients - Hôpital de Bambey</title>
 
-        header {
-            background: #087f8c;
-            color: white;
-            text-align: center;
-            padding: 25px;
-        }
+<style>
 
-        .conteneur {
-            max-width: 600px;
-            margin: 30px auto;
-            background: white;
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.15);
-        }
+* {
+    box-sizing: border-box;
+}
 
-        h2 {
-            color: #087f8c;
-            text-align: center;
-        }
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f2f6fa;
+    color: #222;
+}
 
-        label {
-            display: block;
-            margin-top: 15px;
-            font-weight: bold;
-        }
+header {
+    background: #087fb7;
+    color: white;
+    text-align: center;
+    padding: 25px 15px;
+}
 
-        input, select {
-            width: 100%;
-            padding: 12px;
-            margin-top: 6px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-        }
+header h1 {
+    margin: 0;
+    font-size: 27px;
+}
 
-        button {
-            width: 100%;
-            margin-top: 25px;
-            padding: 13px;
-            background: #087f8c;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            font-size: 16px;
-        }
+header p {
+    margin: 8px 0 0;
+}
 
-        .retour {
-            display: block;
-            text-align: center;
-            margin-top: 20px;
-            color: #087f8c;
-        }
-    </style>
+.container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+}
+
+.card {
+    background: white;
+    padding: 22px;
+    border-radius: 14px;
+    margin-bottom: 20px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+}
+
+h2 {
+    color: #087fb7;
+    margin-top: 0;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-top: 13px;
+    margin-bottom: 6px;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #aaa;
+    border-radius: 7px;
+    font-size: 16px;
+}
+
+button {
+    border: none;
+    border-radius: 8px;
+    padding: 13px 18px;
+    margin-top: 15px;
+    background: #087fb7;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.recherche {
+    margin-bottom: 15px;
+}
+
+.patient {
+    border-left: 5px solid violet;
+    background: #087fb7;;
+    padding: 15px;
+    margin-top: 12px;
+    border-radius: 7px;
+}
+
+.patient strong {
+    color:violet;
+}
+
+.supprimer {
+    background: #087fb7;;
+    font-size: 14px;
+}
+
+.retour {
+    background: #555;
+    width: 100%;
+}
+
+.message {
+    margin-top: 12px;
+    font-weight: bold;
+}
+
+@media (max-width: 600px) {
+
+    .container {
+        padding: 12px;
+    }
+
+    .card {
+        padding: 17px;
+    }
+
+}
+
+</style>
 </head>
 
 <body>
 
 <header>
-    <h1>Hôpital de Bambey</h1>
+
+    <h1>🏥 HOPITAL DE BAMBEY</h1>
+
     <p>Gestion des patients</p>
+
 </header>
 
-<div class="conteneur">
 
-    <h2>Enregistrer un patient</h2>
+<div class="container">
 
-    <form>
 
-        <label>Nom</label>
-        <input type="text" placeholder="Nom du patient">
+<!-- AJOUT PATIENT -->
 
-        <label>Prénom</label>
-        <input type="text" placeholder="Prénom du patient">
+<div class="card">
 
-        <label>Date de naissance</label>
-        <input type="date">
+    <h2>➕ Nouveau patient</h2>
 
-        <label>Sexe</label>
-        <select>
-            <option>Choisir</option>
-            <option>Masculin</option>
-            <option>Féminin</option>
-        </select>
+    <label>Prénom</label>
 
-        <label>Téléphone</label>
-        <input type="tel" placeholder="77 000 00 00">
+    <input
+        type="text"
+        id="prenom"
+        placeholder="Prénom"
+    >
 
-        <label>Adresse</label>
-        <input type="text" placeholder="Adresse du patient">
 
-        <button type="submit">
-            Enregistrer le patient
-        </button>
+    <label>Nom</label>
 
-    </form>
+    <input
+        type="text"
+        id="nom"
+        placeholder="Nom"
+    >
 
-    <a class="retour" href="index.html">
-        ← Retour à l'accueil
-    </a>
+
+    <label>Date de naissance</label>
+
+    <input
+        type="date"
+        id="naissance"
+    >
+
+
+    <label>Téléphone</label>
+
+    <input
+        type="tel"
+        id="telephone"
+        placeholder="77 XXX XX XX"
+    >
+
+
+    <label>Sexe</label>
+
+    <select id="sexe">
+
+        <option value="">-- Choisir --</option>
+
+        <option>Femme</option>
+
+        <option>Homme</option>
+
+    </select>
+
+
+    <button onclick="ajouterPatient()">
+        ENREGISTRER LE PATIENT
+    </button>
+
+
+    <div id="message" class="message"></div>
 
 </div>
+
+
+
+<!-- RECHERCHE -->
+
+<div class="card">
+
+    <h2>🔎 Rechercher un patient</h2>
+
+    <input
+        type="text"
+        id="recherche"
+        class="recherche"
+        placeholder="Nom, prénom ou numéro de dossier..."
+        oninput="afficherPatients()"
+    >
+
+</div>
+
+
+
+<!-- LISTE -->
+
+<div class="card">
+
+    <h2>👥 Liste des patients</h2>
+
+    <div id="listePatients"></div>
+
+</div>
+
+</div>
+    
+<button
+    class="retour"
+    onclick="window.location.href='hopital.html'"
+>
+    ← RETOUR AU TABLEAU DE BORD
+</button>
+
+    
+
+
+
+<script>
+
+
+// Récupérer les patients enregistrés
+
+let patients =
+    JSON.parse(localStorage.getItem("patientsBambey")) || [];
+
+
+// Générer un numéro de dossier
+
+function genererNumero() {
+
+    return "PAT-" +
+        String(
+            patients.length + 1
+        ).padStart(5, "0");
+
+}
+
+
+// Ajouter un patient
+
+function ajouterPatient() {
+
+    const prenom =
+        document.getElementById("prenom").value.trim();
+
+    const nom =
+        document.getElementById("nom").value.trim();
+
+    const naissance =
+        document.getElementById("naissance").value;
+
+    const telephone =
+        document.getElementById("telephone").value.trim();
+
+    const sexe =
+        document.getElementById("sexe").value;
+
+
+    if (
+        prenom === "" ||
+        nom === "" ||
+        naissance === "" ||
+        telephone === "" ||
+        sexe === ""
+    ) {
+
+        document.getElementById("message").textContent =
+            "⚠️ Veuillez remplir tous les champs.";
+
+        return;
+    }
+
+
+    const patient = {
+
+        numero: genererNumero(),
+
+        prenom: prenom,
+
+        nom: nom,
+
+        naissance: naissance,
+
+        telephone: telephone,
+
+        sexe: sexe
+
+    };
+
+
+    patients.push(patient);
+
+
+    localStorage.setItem(
+        "patientsBambey",
+        JSON.stringify(patients)
+    );
+
+
+    document.getElementById("message").textContent =
+        "✅ Patient enregistré : " +
+        patient.numero;
+
+
+    // Vider les champs
+
+    document.getElementById("prenom").value = "";
+
+    document.getElementById("nom").value = "";
+
+    document.getElementById("naissance").value = "";
+
+    document.getElementById("telephone").value = "";
+
+    document.getElementById("sexe").value = "";
+
+
+    afficherPatients();
+
+}
+
+
+// Afficher les patients
+
+function afficherPatients() {
+
+    const recherche =
+        document.getElementById("recherche")
+        .value
+        .toLowerCase();
+
+
+    const liste =
+        document.getElementById("listePatients");
+
+
+    liste.innerHTML = "";
+
+
+    const resultats =
+        patients.filter(patient =>
+
+            patient.nom.toLowerCase().includes(recherche) ||
+
+            patient.prenom.toLowerCase().includes(recherche) ||
+
+            patient.numero.toLowerCase().includes(recherche)
+
+        );
+
+
+    if (resultats.length === 0) {
+
+        liste.innerHTML =
+            "<p>Aucun patient trouvé.</p>";
+
+        return;
+    }
+
+
+    resultats.forEach(patient => {
+
+        const div =
+            document.createElement("div");
+
+        div.className = "patient";
+
+
+        div.innerHTML = `
+
+            <strong>
+                ${patient.numero}
+            </strong>
+
+            <br><br>
+
+            👤 ${patient.prenom}
+            ${patient.nom}
+
+            <br>
+
+            🎂 ${patient.naissance}
+
+            <br>
+
+            📞 ${patient.telephone}
+
+            <br>
+
+            ${patient.sexe}
+
+            <br>
+
+            <button
+                class="supprimer"
+                onclick="supprimerPatient('${patient.numero}')"
+            >
+                SUPPRIMER
+            </button>
+
+        `;
+
+
+        liste.appendChild(div);
+
+    });
+
+}
+
+
+// Supprimer un patient
+
+function supprimerPatient(numero) {
+
+    if (
+        !confirm(
+            "Voulez-vous supprimer ce patient ?"
+        )
+    ) {
+
+        return;
+    }
+
+
+    patients =
+        patients.filter(
+            patient =>
+            patient.numero !== numero
+        );
+
+
+    localStorage.setItem(
+        "patientsBambey",
+        JSON.stringify(patients)
+    );
+
+
+    afficherPatients();
+
+}
+
+
+// Affichage initial
+
+afficherPatients();
+
+</script>
 
 </body>
 </html>
