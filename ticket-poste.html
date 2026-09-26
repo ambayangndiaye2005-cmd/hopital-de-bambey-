@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Ticket - Poste de santé de Bambey</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background:white;
+    color: #123;
+}
+
+header {
+    background:#00796b;;
+    color:white;
+    text-align: center;
+    padding: 22px 15px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+header p {
+    margin: 8px 0 0;
+    font-size: 15px;
+}
+
+.container {
+    width: 92%;
+    max-width: 600px;
+    margin: 25px auto;
+}
+
+.card {
+    background: white;
+    padding: 22px;
+    border-radius: 15px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.10);
+    margin-bottom: 20px;
+}
+
+h2 {
+    color:#00796b;
+    margin-top: 0;
+}
+
+label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+button {
+    width: 100%;
+    padding: 14px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 8px;
+    background:#00796b;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #005f54;
+}
+
+.ticket {
+    display: none;
+    text-align: center;
+    border: 2px solid #00796b;
+}
+
+.numero {
+    font-size: 42px;
+    font-weight: bold;
+    color:white;
+    margin: 15px 0;
+}
+
+.info {
+    text-align: left;
+    line-height: 1.8;
+}
+
+.position {
+    background:black;
+    padding: 12px;
+    border-radius: 8px;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.btn-secondaire {
+    background: #555;
+}
+
+.btn-danger {
+    background: #c62828;
+}
+
+.btn-danger:hover {
+    background: #9b1c1c;
+}
+
+.file-attente {
+    display: none;
+}
+
+.ticket-attente {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+.footer {
+    text-align: center;
+    color: #555;
+    font-size: 13px;
+    margin: 25px 0;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>POSTE DE SANTÉ DE BAMBEY</h1>
+    <p>Votre santé, notre priorité</p>
+</header>
+
+<div class="container">
+
+    <!-- FORMULAIRE -->
+    <div class="card">
+        <h2>🎫 Prendre un ticket</h2>
+
+        <label for="prenom">Prénom du patient</label>
+        <input type="text" id="prenom" placeholder="Exemple : Awa">
+
+        <label for="nom">Nom du patient</label>
+        <input type="text" id="nom" placeholder="Exemple : Ndiaye">
+
+        <label for="telephone">Téléphone</label>
+        <input type="tel" id="telephone" placeholder="Exemple : 77 000 00 00">
+
+        <label for="consultation">Type de consultation</label>
+        <select id="consultation">
+            <option value="">-- Choisir --</option>
+            <option value="Consultation générale">Consultation générale</option>
+            <option value="Pédiatrie">Pédiatrie</option>
+            <option value="Gynécologie">Maternité</option>
+            <option value="Vaccination">Vaccination</option>
+            <option value="Soins infirmiers">Soins infirmiers</option>
+        </select>
+
+        <label for="mutuelle">Mutuelle</label>
+        <select id="mutuelle">
+            <option value="">-- Choisir --</option>
+            <option value="Aucune">Aucune</option>
+            <option value="CMU">CMU</option>
+            <option value="TransVie">TransVie</option>
+            <option value="Autre">Autre</option>
+        </select>
+
+        <button onclick="prendreTicket()">
+            🎫 PRENDRE MON TICKET
+        </button>
+    </div>
+
+
+    <!-- TICKET -->
+    <div class="card ticket" id="ticket">
+
+        <h2>Votre ticket</h2>
+
+        <div class="numero" id="numeroTicket">
+            A-0000
+        </div>
+
+        <div class="info">
+            <p><strong>Patient :</strong>
+                <span id="affichagePatient"></span>
+            </p>
+
+            <p><strong>Téléphone :</strong>
+                <span id="affichageTelephone"></span>
+            </p>
+
+            <p><strong>Consultation :</strong>
+                <span id="affichageConsultation"></span>
+            </p>
+
+            <p><strong>Mutuelle :</strong>
+                <span id="affichageMutuelle"></span>
+            </p>
+
+            <p><strong>Date :</strong>
+                <span id="affichageDate"></span>
+            </p>
+        </div>
+
+        <div class="position">
+            📍 Position dans la file :
+            <span id="affichagePosition"></span>
+        </div>
+
+        <button onclick="actualiserFile()">
+            🔄 ACTUALISER MA POSITION
+        </button>
+
+        <button class="btn-danger" onclick="annulerTicket()">
+            ❌ ANNULER LE TICKET
+        </button>
+
+    </div>
+
+
+    <!-- FILE D'ATTENTE -->
+    <div class="card file-attente" id="fileAttente">
+
+        <h2>👥 File d'attente</h2>
+
+        <div id="listeTickets"></div>
+
+    </div>
+
+
+    
+        
+
+    <div class="footer">
+        Poste de santé de Bambey
+    </div>
+
+</div>
+
+
+<script>
+
+function prendreTicket() {
+
+    const prenom =
+        document.getElementById("prenom").value.trim();
+
+    const nom =
+        document.getElementById("nom").value.trim();
+
+    const telephone =
+        document.getElementById("telephone").value.trim();
+
+    const consultation =
+        document.getElementById("consultation").value;
+
+    const mutuelle =
+        document.getElementById("mutuelle").value;
+
+
+    if (prenom === "") {
+        alert("Veuillez saisir le prénom du patient.");
+        return;
+    }
+
+    if (nom === "") {
+        alert("Veuillez saisir le nom du patient.");
+        return;
+    }
+
+    if (telephone === "") {
+        alert("Veuillez saisir le numéro de téléphone.");
+        return;
+    }
+
+    if (consultation === "") {
+        alert("Veuillez choisir le type de consultation.");
+        return;
+    }
+
+    if (mutuelle === "") {
+        alert("Veuillez choisir une mutuelle.");
+        return;
+    }
+
+
+    let tickets =
+        JSON.parse(localStorage.getItem("ticketsPosteBambey")) || [];
+
+
+    const numero =
+        "P-" + Math.floor(1000 + Math.random() * 9000);
+
+
+    const position =
+        tickets.length + 1;
+
+
+    const maintenant = new Date();
+
+
+    const date =
+        maintenant.toLocaleString("fr-FR");
+
+
+    const nouveauTicket = {
+
+        numero: numero,
+
+        prenom: prenom,
+
+        nom: nom,
+
+        telephone: telephone,
+
+        consultation: consultation,
+
+        mutuelle: mutuelle,
+
+        position: position,
+
+        date: date,
+
+        statut: "En attente"
+    };
+
+
+    tickets.push(nouveauTicket);
+
+
+    localStorage.setItem(
+        "ticketsPosteBambey",
+        JSON.stringify(tickets)
+    );
+
+
+    afficherTicket(nouveauTicket);
+
+    afficherFile();
+
+
+    alert(
+        "Ticket créé avec succès !\n\n" +
+        "Numéro : " + numero +
+        "\nPosition : " + position
+    );
+}
+
+
+
+function afficherTicket(ticket) {
+
+    document.getElementById("numeroTicket")
+        .textContent = ticket.numero;
+
+    document.getElementById("affichagePatient")
+        .textContent =
+        ticket.prenom + " " + ticket.nom;
+
+    document.getElementById("affichageTelephone")
+        .textContent = ticket.telephone;
+
+    document.getElementById("affichageConsultation")
+        .textContent = ticket.consultation;
+
+    document.getElementById("affichageMutuelle")
+        .textContent = ticket.mutuelle;
+
+    document.getElementById("affichageDate")
+        .textContent = ticket.date;
+
+    document.getElementById("affichagePosition")
+        .textContent = ticket.position;
+
+    document.getElementById("ticket").style.display =
+        "block";
+
+    document.getElementById("ticket")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
+}
+
+
+
+function afficherFile() {
+
+    const tickets =
+        JSON.parse(localStorage.getItem("ticketsPosteBambey")) || [];
+
+    const liste =
+        document.getElementById("listeTickets");
+
+    liste.innerHTML = "";
+
+
+    if (tickets.length === 0) {
+
+        document.getElementById("fileAttente")
+            .style.display = "none";
+
+        return;
+    }
+
+
+    document.getElementById("fileAttente")
+        .style.display = "block";
+
+
+    tickets.forEach(function(ticket) {
+
+        if (ticket.statut === "En attente") {
+
+            const element =
+                document.createElement("div");
+
+            element.className =
+                "ticket-attente";
+
+            element.innerHTML =
+                "<strong>" +
+                ticket.numero +
+                "</strong> — " +
+                ticket.prenom +
+                " " +
+                ticket.nom +
+                "<br>" +
+                "Consultation : " +
+                ticket.consultation;
+
+            liste.appendChild(element);
+        }
+
+    });
+}
+
+
+
+function actualiserFile() {
+
+    let tickets =
+        JSON.parse(localStorage.getItem("ticketsPosteBambey")) || [];
+
+
+    const numero =
+        document.getElementById("numeroTicket")
+            .textContent;
+
+
+    const ticket =
+        tickets.find(function(t) {
+            return t.numero === numero;
+        });
+
+
+    if (!ticket) {
+        alert("Ticket introuvable.");
+        return;
+    }
+
+
+    const position =
+        tickets.filter(function(t) {
+
+            return (
+                t.statut === "En attente" &&
+                tickets.indexOf(t) <= tickets.indexOf(ticket)
+            );
+
+        }).length;
+
+
+    ticket.position = position;
+
+
+    localStorage.setItem(
+        "ticketsPosteBambey",
+        JSON.stringify(tickets)
+    );
+
+
+    document.getElementById("affichagePosition")
+        .textContent = position;
+
+
+    afficherFile();
+
+
+    alert(
+        "Votre position a été actualisée : " +
+        position
+    );
+}
+
+
+
+function annulerTicket() {
+
+    const numero =
+        document.getElementById("numeroTicket")
+            .textContent;
+
+
+    if (!confirm(
+        "Voulez-vous vraiment annuler ce ticket ?"
+    )) {
+        return;
+    }
+
+
+    let tickets =
+        JSON.parse(localStorage.getItem("ticketsPosteBambey")) || [];
+
+
+    tickets =
+        tickets.filter(function(ticket) {
+            return ticket.numero !== numero;
+        });
+
+
+    localStorage.setItem(
+        "ticketsPosteBambey",
+        JSON.stringify(tickets)
+    );
+
+
+    document.getElementById("ticket")
+        .style.display = "none";
+
+
+    afficherFile();
+
+
+    alert("Votre ticket a été annulé.");
+}
+
+
+
+function retourAccueil() {
+
+    window.location.href = "page2.html";
+}
+
+
+
+afficherFile();
+
+</script>
+		<button
+    class="retour"
+    onclick="window.location.href='page2.html'">
+
+    ← RETOUR AU TABLEAU DE BORD
+</button>
+		
+</body>
+</html>
