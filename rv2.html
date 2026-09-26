@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Rendez-vous - Poste de santé</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f2f7f9;
+    color: #123;
+}
+
+header {
+    background: #00796b;
+    color: white;
+    text-align: center;
+    padding: 22px 15px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 23px;
+}
+
+header p {
+    margin: 8px 0 0;
+}
+
+.container {
+    width: 92%;
+    max-width: 600px;
+    margin: 25px auto;
+}
+
+.card {
+    background: white;
+    padding: 22px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.10);
+}
+
+h2 {
+    color: #00796b;
+    margin-top: 0;
+}
+
+label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+button {
+    width: 100%;
+    padding: 14px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 8px;
+    background: #00796b;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.btn-retour {
+    background:#00796b;;
+}
+
+.btn-annuler {
+    background: #c62828;
+}
+
+.confirmation {
+    display: none;
+    background: #e0f2f1;
+    border: 2px solid #00796b;
+    padding: 18px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.rdv {
+    border-bottom: 1px solid #ddd;
+    padding: 15px 0;
+}
+
+.rdv:last-child {
+    border-bottom: none;
+}
+
+.reference {
+    color: #00796b;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.vide {
+    color: #777;
+    text-align: center;
+    padding: 15px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>POSTES DE SANTÉ</h1>
+    <p>Rendez-vous médical</p>
+</header>
+
+<div class="container">
+
+    <!-- FORMULAIRE -->
+    <div class="card">
+
+        <h2>📅 Prendre un rendez-vous</h2>
+
+        <label for="poste">Poste de santé</label>
+
+        <select id="poste">
+            <option value="">-- Choisir un poste --</option>
+            <option value="Leona Sud">
+                Leona-Sud
+            </option>
+            <option value="Saint-Martin">
+                Saint-Martin
+            </option>
+            <option value="DVF">
+                DVF
+            </option>
+            <option value="">
+                Croix-Rouge
+            </option>
+        </select>
+
+
+        <label for="prenom">Prénom</label>
+
+        <input
+            type="text"
+            id="prenom"
+            placeholder="Exemple : Awa"
+        >
+
+
+        <label for="nom">Nom</label>
+
+        <input
+            type="text"
+            id="nom"
+            placeholder="Exemple : Ndiaye"
+        >
+
+
+        <label for="telephone">Téléphone</label>
+
+        <input
+            type="tel"
+            id="telephone"
+            placeholder="77 000 00 00"
+        >
+
+
+        <label for="consultation">
+            Type de consultation
+        </label>
+
+        <select id="consultation">
+
+            <option value="">
+                -- Choisir --
+            </option>
+
+            <option value="Consultation générale">
+                Consultation générale
+            </option>
+
+            <option value="Pédiatrie">
+                Pédiatrie
+            </option>
+
+            <option value="Maternité">
+                Gynécologie
+            </option>
+
+            <option value="Vaccination">
+                Vaccination
+            </option>
+        		
+
+            <option value="Soins infirmiers">
+                Soins infirmiers
+            </option>
+
+        </select>
+
+
+        <label for="date">
+            Date du rendez-vous
+        </label>
+
+        <input
+            type="date"
+            id="date"
+        >
+
+
+        <label for="heure">
+            Heure du rendez-vous
+        </label>
+
+        <input
+            type="time"
+            id="heure"
+        >
+
+
+        <button onclick="prendreRendezVous()">
+            📅 CONFIRMER LE RENDEZ-VOUS
+        </button>
+
+    </div>
+
+
+    <!-- CONFIRMATION -->
+
+    <div
+        class="card confirmation"
+        id="confirmation"
+    >
+
+        <h2>✅ Rendez-vous confirmé</h2>
+
+        <p>
+            <strong>Référence :</strong>
+            <span id="reference"></span>
+        </p>
+
+        <p>
+            <strong>Patient :</strong>
+            <span id="patient"></span>
+        </p>
+
+        <p>
+            <strong>Poste :</strong>
+            <span id="posteConfirmation"></span>
+        </p>
+
+        <p>
+            <strong>Consultation :</strong>
+            <span id="consultationConfirmation"></span>
+        </p>
+
+        <p>
+            <strong>Date :</strong>
+            <span id="dateConfirmation"></span>
+        </p>
+
+        <p>
+            <strong>Heure :</strong>
+            <span id="heureConfirmation"></span>
+        </p>
+
+        <button
+            class="btn-annuler"
+            onclick="annulerDernierRdv()"
+        >
+            ❌ ANNULER CE RENDEZ-VOUS
+        </button>
+
+    </div>
+
+
+    <!-- RENDEZ-VOUS ENREGISTRÉS -->
+
+    <div class="card">
+
+        <h2>📋 Mes rendez-vous</h2>
+
+        <div id="listeRdv"></div>
+
+    </div>
+
+
+    <button
+        class="btn-retour"
+        onclick="retourAccueil()"
+    >
+        ⬅️ Retour à l'accueil
+    </button>
+
+</div>
+
+
+<script>
+
+const CLE =
+    "rendezVousPostesBambey";
+
+
+/* =========================
+   PRENDRE RENDEZ-VOUS
+========================= */
+
+function prendreRendezVous() {
+
+    const poste =
+        document.getElementById("poste").value;
+
+    const prenom =
+        document.getElementById("prenom").value.trim();
+
+    const nom =
+        document.getElementById("nom").value.trim();
+
+    const telephone =
+        document.getElementById("telephone").value.trim();
+
+    const consultation =
+        document.getElementById("consultation").value;
+
+    const date =
+        document.getElementById("date").value;
+
+    const heure =
+        document.getElementById("heure").value;
+
+
+    if (poste === "") {
+        alert("Veuillez choisir un poste de santé.");
+        return;
+    }
+
+    if (prenom === "") {
+        alert("Veuillez saisir le prénom.");
+        return;
+    }
+
+    if (nom === "") {
+        alert("Veuillez saisir le nom.");
+        return;
+    }
+
+    if (telephone === "") {
+        alert("Veuillez saisir le téléphone.");
+        return;
+    }
+
+    if (consultation === "") {
+        alert("Veuillez choisir la consultation.");
+        return;
+    }
+
+    if (date === "") {
+        alert("Veuillez choisir une date.");
+        return;
+    }
+
+    if (heure === "") {
+        alert("Veuillez choisir une heure.");
+        return;
+    }
+
+
+    const reference =
+        "RDV-" +
+        Math.floor(
+            10000 + Math.random() * 90000
+        );
+
+
+    const rendezVous = {
+
+        reference: reference,
+
+        poste: poste,
+
+        prenom: prenom,
+
+        nom: nom,
+
+        telephone: telephone,
+
+        consultation: consultation,
+
+        date: date,
+
+        heure: heure,
+
+        statut: "Programmé",
+
+        dateCreation:
+            new Date().toLocaleString("fr-FR")
+    };
+
+
+    let liste =
+        JSON.parse(
+            localStorage.getItem(CLE)
+        ) || [];
+
+
+    liste.push(rendezVous);
+
+
+    localStorage.setItem(
+        CLE,
+        JSON.stringify(liste)
+    );
+
+
+    afficherConfirmation(
+        rendezVous
+    );
+
+    afficherRendezVous();
+
+
+    alert(
+        "Rendez-vous enregistré !\n\n" +
+        "Référence : " +
+        reference
+    );
+}
+
+
+/* =========================
+   AFFICHER CONFIRMATION
+========================= */
+
+function afficherConfirmation(rdv) {
+
+    document.getElementById(
+        "reference"
+    ).textContent =
+        rdv.reference;
+
+    document.getElementById(
+        "patient"
+    ).textContent =
+        rdv.prenom +
+        " " +
+        rdv.nom;
+
+    document.getElementById(
+        "posteConfirmation"
+    ).textContent =
+        rdv.poste;
+
+    document.getElementById(
+        "consultationConfirmation"
+    ).textContent =
+        rdv.consultation;
+
+    document.getElementById(
+        "dateConfirmation"
+    ).textContent =
+        rdv.date;
+
+    document.getElementById(
+        "heureConfirmation"
+    ).textContent =
+        rdv.heure;
+
+
+    document.getElementById(
+        "confirmation"
+    ).style.display =
+        "block";
+
+
+    document.getElementById(
+        "confirmation"
+    ).scrollIntoView({
+        behavior: "smooth"
+    });
+}
+
+
+/* =========================
+   AFFICHER LES RDV
+========================= */
+
+function afficherRendezVous() {
+
+    const liste =
+        JSON.parse(
+            localStorage.getItem(CLE)
+        ) || [];
+
+
+    const zone =
+        document.getElementById(
+            "listeRdv"
+        );
+
+
+    zone.innerHTML = "";
+
+
+    if (liste.length === 0) {
+
+        zone.innerHTML =
+            '<div class="vide">' +
+            'Aucun rendez-vous enregistré.' +
+            '</div>';
+
+        return;
+    }
+
+
+    liste.forEach(function(rdv, index) {
+
+        const div =
+            document.createElement("div");
+
+
+        div.className = "rdv";
+
+
+        div.innerHTML =
+
+            '<div class="reference">' +
+            rdv.reference +
+            '</div>' +
+
+            '<p><strong>Patient :</strong> ' +
+            rdv.prenom +
+            " " +
+            rdv.nom +
+            '</p>' +
+
+            '<p><strong>Poste :</strong> ' +
+            rdv.poste +
+            '</p>' +
+
+            '<p><strong>Consultation :</strong> ' +
+            rdv.consultation +
+            '</p>' +
+
+            '<p><strong>Date :</strong> ' +
+            rdv.date +
+            ' à ' +
+            rdv.heure +
+            '</p>' +
+
+            '<p><strong>Statut :</strong> ' +
+            rdv.statut +
+            '</p>' +
+
+            '<button class="btn-annuler" ' +
+            'onclick="annulerRdv(' +
+            index +
+            ')">' +
+            '❌ Annuler' +
+            '</button>';
+
+
+        zone.appendChild(div);
+
+    });
+}
+
+
+/* =========================
+   ANNULER UN RDV
+========================= */
+
+function annulerRdv(index) {
+
+    if (!confirm(
+        "Voulez-vous annuler ce rendez-vous ?"
+    )) {
+        return;
+    }
+
+
+    let liste =
+        JSON.parse(
+            localStorage.getItem(CLE)
+        ) || [];
+
+
+    liste.splice(index, 1);
+
+
+    localStorage.setItem(
+        CLE,
+        JSON.stringify(liste)
+    );
+
+
+    afficherRendezVous();
+
+
+    document.getElementById(
+        "confirmation"
+    ).style.display =
+        "none";
+
+
+    alert(
+        "Rendez-vous annulé."
+    );
+}
+
+
+/* =========================
+   ANNULER DERNIER RDV
+========================= */
+
+function annulerDernierRdv() {
+
+    const reference =
+        document.getElementById(
+            "reference"
+        ).textContent;
+
+
+    let liste =
+        JSON.parse(
+            localStorage.getItem(CLE)
+        ) || [];
+
+
+    liste =
+        liste.filter(function(rdv) {
+
+            return rdv.reference !==
+                reference;
+
+        });
+
+
+    localStorage.setItem(
+        CLE,
+        JSON.stringify(liste)
+    );
+
+
+    document.getElementById(
+        "confirmation"
+    ).style.display =
+        "none";
+
+
+    afficherRendezVous();
+
+
+    alert(
+        "Rendez-vous annulé."
+    );
+}
+
+
+/* =========================
+   RETOUR
+========================= */
+
+function retourAccueil() {
+
+    window.location.href =
+        "page2.html";
+}
+
+
+/* =========================
+   CHARGEMENT
+========================= */
+
+afficherRendezVous();
+
+</script>
+
+</body>
+</html>
