@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Santé Bambey</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f7f9;
+            color: #222;
+        }
+
+        header {
+            background: #087f8c;
+            color: white;
+            padding: 25px 15px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 16px;
+        }
+
+        nav {
+            background: white;
+            padding: 12px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #087f8c;
+            margin: 0 10px;
+            font-weight: bold;
+        }
+
+        .container {
+            padding: 20px;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .welcome {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .card h2 {
+            color: #087f8c;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .button {
+            display: inline-block;
+            background: #087f8c;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 7px;
+            text-decoration: none;
+        }
+
+        .button:hover {
+            background: #05616b;
+        }
+
+        footer {
+            margin-top: 30px;
+            background: #087f8c;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>🏥 Santé Bambey</h1>
+        <p>Plateforme de gestion des services de santé de Bambey</p>
+    </header>
+
+    <nav>
+        <a href="index.html">Accueil</a>
+        <a href="hopital.html">Hôpital</a>
+        <a href="postes.html">Postes de santé</a>
+        <a href="rendezvous.html">Rendez-vous</a>
+    </nav>
+
+    <div class="container">
+
+        <div class="welcome">
+            <h2>Bienvenue sur Santé Bambey</h2>
+            <p>
+                Retrouvez les informations concernant l'hôpital
+                et les postes de santé de Bambey.
+            </p>
+        </div>
+
+        <div class="cards">
+
+            <div class="card">
+                <h2>🏥 Hôpital</h2>
+                <p>
+                    Consultez les informations et les services
+                    disponibles à l'hôpital de Bambey.
+                </p>
+                <a class="button" href="hopital.html">
+                    Voir l'hôpital
+                </a>
+            </div>
+
+            <div class="card">
+                <h2>🏠 Postes de santé</h2>
+                <p>
+                    Découvrez les différents postes de santé
+                    de Bambey et leurs services.
+                </p>
+                <a class="button" href="postes.html">
+                    Voir les postes
+                </a>
+            </div>
+
+            <div class="card">
+                <h2>📅 Rendez-vous</h2>
+                <p>
+                    Accédez à la page de prise de rendez-vous
+                    médical.
+                </p>
+                <a class="button" href="rendezvous.html">
+                    Prendre rendez-vous
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+
+    <footer>
+        <p>© 2026 Santé Bambey</p>
+        <p>Application de gestion des services de santé</p>
+    </footer>
+
+</body>
+</html>
