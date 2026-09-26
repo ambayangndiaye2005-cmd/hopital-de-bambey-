@@ -1,101 +1,187 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Hôpital de Bambey</title>
+    <title>Hôpital de Bambey - Soins et Consultations</title>
 
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f4f8fb;
-            text-align: center;
-        }
+    <meta name="description"
+          content="Site officiel de l'Hôpital de Bambey. Consultez nos spécialistes, horaires, services médicaux et prenez rendez-vous en ligne.">
 
-        header {
-            background: #087f5b;
-            color: white;
-            padding: 30px 15px;
-        }
+    <meta name="keywords"
+          content="Hôpital de Bambey, médecin, consultation, cardiologie, pédiatrie, urgences, Sénégal">
 
-        header h1 {
-            margin: 0;
-            font-size: 30px;
-        }
-
-        header p {
-            font-size: 17px;
-        }
-
-        .container {
-            padding: 25px 15px;
-        }
-
-        .btn {
-            display: block;
-            width: 90%;
-            max-width: 350px;
-            margin: 15px auto;
-            padding: 16px;
-            background: white;
-            color: #087f5b;
-            text-decoration: none;
-            border-radius: 10px;
-            font-size: 18px;
-            font-weight: bold;
-            box-shadow: 0 2px 8px #ccc;
-        }
-
-        .btn:hover {
-            background: #087f5b;
-            color: white;
-        }
-
-        footer {
-            margin-top: 30px;
-            padding: 20px;
-            background: #222;
-            color: white;
-        }
-    </style>
+    <meta name="author" content="Hôpital de Bambey">
+</head>
+		<link rel="icon" href="Ndiaye.png" type="image/png">
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <header>
-        <h1>🏥 Hôpital de Bambey</h1>
-        <p>Application de gestion de l'hôpital</p>
-    </header>
+<header>
+    <h1>HÔPITAL DE BAMBEY</h1>
+    <p>Votre santé, notre priorité</p>
+</header>
 
-    <div class="container">
+<nav>
+    <a href="#accueil">Accueil</a>
+    <a href="#directeur">Directeur</a>
+    <a href="#services">Services</a>
+    <a href="#horaires">Horaires</a>
+    <a href="#tickets">Rendez-vous</a>
+    <a href="#contact">Contact</a>
+</nav>
 
-        <h2>Bienvenue</h2>
+<section id="accueil">
 
-        <p>
-            Bienvenue sur l'application de gestion de
-            l'Hôpital de Bambey.
-        </p>
-
-        <a href="Patients.html" class="btn">👨‍⚕️ Patients</a>
-
-        <a href="Rendezvous.html" class="btn">📅 Rendez-vous</a>
-
-        <a href="Ticket.html" class="btn">🎫 Tickets</a>
-
-        <a href="Postes.html" class="btn">🏥 Postes de santé</a>
-
-        <a href="#" class="btn">💊 Pharmacie</a>
-
-        <a href="#" class="btn">📋 Services</a>
-
+<div class="slider">
+    <img id="slider" src="hop1.png" alt="Hôpital">
+    <div class="texte" id="texte">
+        Bienvenue à l'Hôpital de Bambey
     </div>
+</div>
 
-    <footer>
-        <p>Hôpital de Bambey</p>
-        <p>© 2026 - Application de gestion</p>
-    </footer>
+</section>
+      
+     <a href="page2.html" class="fleche">➜</a> 
 
+<section id="directeur">
+<h2>Mot du Directeur</h2>
+<p>
+      Bienvenue à l'Hôpital de BAMBEY
+Notre mission est d'offrir des soins de qualité,
+accessibles à tous grâce à une équipe compétente,
+des équipements modernes et un accueil chaleureux.
+Votre santé est notre priorité.
+</p>
+</section>
+
+<section id="services">
+
+<h2>Nos Services</h2>
+
+<div class="card">❤️ Cardiologie</div>
+<div class="card">👶 Pédiatrie</div>
+<div class="card">👩‍⚕️ Gynécologie</div>
+<div class="card">👁️ Ophtalmologie</div>
+<div class="card">🦷 Dentisterie</div>
+<div class="card">🧪 Laboratoire</div>
+<div class="card">🚑 Urgences 24h/24</div>
+<div class="card">💊 Pharmacie</div>
+
+</section>
+
+<section id="horaires">
+
+<h2>Horaires de Consultation</h2>
+
+<table>
+<tr>
+<th>Service</th>
+<th>Horaire</th>
+</tr>
+
+<tr>
+<td>Consultation générale</td>
+<td>08h00 - 18h00</td>
+</tr>
+
+<tr>
+<td>Laboratoire</td>
+<td>08h00 - 17h00</td>
+</tr>
+
+<tr>
+<td>Pharmacie</td>
+<td>08h00 - 23h00</td>
+</tr>
+
+<tr>
+<td>Urgences</td>
+<td>24h/24</td>
+</tr>
+</table>
+
+</section>
+
+<section>
+
+<h2>Heures de Visite</h2>
+
+<p>Matin : 11h00 - 13h00</p>
+<p>Après-midi : 16h00 - 20h00</p>
+
+</section>
+
+      
+        
+         <div class="menu-moderne">
+
+    <a href="ticket.html" class="menu-card">
+        <span>🎫</span>
+        <strong>Prendre un ticket</strong>
+        <small>Accéder à la file d'attente</small>
+    </a>
+
+    <a href="rv.html" class="menu-card">
+        <span>📅</span>
+        <strong>Rendez-vous</strong>
+        <small>Prendre ou consulter un rendez-vous</small>
+    </a>
+
+    <a href="patient.html" class="menu-card">
+        <span>👤</span>
+        <strong>Espace patient</strong>
+        <small>Accéder à votre espace personnel</small>
+    </a>
+
+    <a href="cadre.html" class="menu-card">
+        <span>👨‍⚕️</span>
+        <strong>Espace personnel</strong>
+        <small>Gestion des patients et des tickets</small>
+    </a>
+
+</div>         
+            
+  
+
+
+    <h2>Mutuelles de santé </h2>
+    <p>Notre hôpital travaille avec plusieurs mutuelles de santé pour faciliter la prise en charge des patients.</p>
+      <section class="mutuelles">
+    <h2>Mutuelles de santé partenaires</h2>
+
+    <div class="mutuelle">
+          <div class="image">
+        <img class="img -circle"src="m2.png"width="80"height="80" >
+                  <img class="img -circle"src="trans.jpg"width="80"height="80" >
+    </div>
+    </div>
+    
+        
+            
+      
+
+            
+            
+<section id="contact">
+
+<h2>Contact</h2>
+
+<p>📍 Bambey, Sénégal</p>
+<p>📞 +221 XX XXX XX XX</p>
+<p>📧 contact@hopital-bambey.sn</p>
+            <div class="logo">
+                  <img src="google-logo.png" alt="" class="petitimage1">
+                  <img src="x.png" alt="" class="petitimage1">
+                  <img src="youtube.png"alt=""class="petitimage2">
+            </div>
+<p>&copy; 2026 hopital de Bambey - Tous droits réservés</p>
+</section>
+            
+<script src="java.js"></script>
+               
 </body>
 </html>
